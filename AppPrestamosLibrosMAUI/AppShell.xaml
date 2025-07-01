@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell
+    x:Class="AppPrestamosLibrosMAUI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AppPrestamosLibrosMAUI.Views"
+    Title="AppPrestamosLibrosMAUI">
+
+    <!-- Página para registrar libros -->
+    <ShellContent
+        Title="Registrar Libros"
+        ContentTemplate="{DataTemplate local:LibrosPage}"
+        Route="LibrosPage" />
+
+    <!-- Página para registrar usuarios -->
+    <ShellContent
+        Title="Registrar Usuarios"
+        ContentTemplate="{DataTemplate local:UsuariosPage}"
+        Route="UsuariosPage" />
+
+    <!-- Página para ver usuarios -->
+    <ShellContent
+        Title="Ver Usuarios"
+        ContentTemplate="{DataTemplate local:UsuariosListaPage}"
+        Route="UsuariosListaPage" />
+
+    <!-- Página para ver libros -->
+    <ShellContent
+        Title="Ver Libros"
+        ContentTemplate="{DataTemplate local:LibrosListaPage}"
+        Route="LibrosListaPage" />
+
+    <!-- Página para registrar préstamos -->
+    <ShellContent
+        Title="Registrar Préstamo"
+        ContentTemplate="{DataTemplate local:PrestamosPage}"
+        Route="PrestamosPage" />
+
+    <!-- Página para ver préstamos -->
+    <ShellContent
+        Title="Ver Préstamos"
+        ContentTemplate="{DataTemplate local:PrestamosListaPage}"
+        Route="PrestamosListaPage" />
+
+</Shell>
+

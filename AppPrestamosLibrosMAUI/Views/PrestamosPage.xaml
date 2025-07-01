@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+             x:Class="AppPrestamosLibrosMAUI.Views.PrestamosPage"
+             Title="Registrar Préstamo">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Seleccionar Libro:" />
+            <Picker x:Name="libroPicker"
+                    ItemDisplayBinding="{Binding Titulo}" />
+
+            <Label Text="Seleccionar Usuario:" />
+            <Picker x:Name="usuarioPicker"
+                    ItemDisplayBinding="{Binding Nombre}" />
+
+            <Label Text="Fecha del Préstamo:" />
+            <DatePicker x:Name="fechaPicker"
+                        Format="dd/MM/yyyy"
+                        MaximumDate="{x:Static sys:DateTime.Today}" />
+
+            <Button Text="Guardar Préstamo"
+                    Clicked="OnGuardarPrestamoClicked"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    CornerRadius="10" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

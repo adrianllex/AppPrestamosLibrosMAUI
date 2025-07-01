@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AppPrestamosLibrosMAUI.Views"
+             xmlns:converters="clr-namespace:AppPrestamosLibrosMAUI.Converters"
+             x:Class="AppPrestamosLibrosMAUI.Views.PrestamosListaPage"
+             Title="Lista de Préstamos">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NullToBoolConverter x:Key="NullToBoolConverter" />
+            <converters:NullToInverseBoolConverter x:Key="NullToInverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Préstamos Registrados"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <!-- Botón para alternar entre ver todos los préstamos y los no devueltos -->
+            <Button Text="Ver Todos los Préstamos"
+                    Clicked="OnFiltrarTodosClicked"
+                    BackgroundColor="#FF9800"
+                    TextColor="White"
+                    CornerRadius="10" />
+
+            <CollectionView x:Name="prestamosCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Stroke="LightGray" StrokeShape="RoundRectangle 10" Padding="10" Margin="5">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding UsuarioId, StringFormat='👤 Usuario ID: {0}'}" />
+                                <Label Text="{Binding LibroId, StringFormat='📚 Libro ID: {0}'}" />
+                                <Label Text="{Binding FechaPrestamo, StringFormat='📅 Fecha préstamo: {0:dd/MM/yyyy}'}" />
+                                <Label Text="{Binding FechaDevolucion, StringFormat='✅ Fecha devolución: {0:dd/MM/yyyy}'}"
+                                       IsVisible="{Binding FechaDevolucion, Converter={StaticResource NullToBoolConverter}}" />
+
+                                <Button Text="Marcar como devuelto"
+                                        BackgroundColor="#4CAF50"
+                                        TextColor="White"
+                                        CornerRadius="10"
+                                        Clicked="OnMarcarComoDevueltoClicked"
+                                        IsVisible="{Binding FechaDevolucion, Converter={StaticResource NullToInverseBoolConverter}}" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
