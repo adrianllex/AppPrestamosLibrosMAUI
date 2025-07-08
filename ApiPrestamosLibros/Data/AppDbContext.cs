@@ -18,20 +18,18 @@ namespace ApiPrestamosLibros.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Relación: Un Usuario tiene muchos Préstamos
+            // Relaciones (opcional, si ya las tienes en los modelos)
             modelBuilder.Entity<Prestamo>()
                 .HasOne(p => p.Usuario)
                 .WithMany(u => u.Prestamos)
-                .HasForeignKey(p => p.UsuarioId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(p => p.UsuarioId);
 
-            // Relación: Un Libro tiene muchos Préstamos
             modelBuilder.Entity<Prestamo>()
                 .HasOne(p => p.Libro)
                 .WithMany(l => l.Prestamos)
-                .HasForeignKey(p => p.LibroId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(p => p.LibroId);
         }
     }
 }
+
 
